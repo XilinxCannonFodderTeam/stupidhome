@@ -1,16 +1,26 @@
 # stupidhome
 
-A new Flutter application.
+This is an app developed with Flutter framework. And it is designed to control our smart lock.
 
-## Getting Started
+## How to build the app
 
-This project is a starting point for a Flutter application.
+Please follow the instruction wrote by Google to install Flutter on your own computer and configure the Android Studio.
 
-A few resources to get you started if this is your first Flutter project:
+[Flutter:Getting started](https://flutter.dev/docs/get-started/install)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Then clone the repository and open it with Android Studio. And you can build, run or do everything you want.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## The function of the app
+
+The main functions are:
+- Add the device(the smart lock)
+- Remove the device
+- Unlock & Lock
+- See what is happening in front of your smart lock with streaming
+- Get notified when stranger is approaching your smart lock
+
+You can explore the corresponding function in the code.
+
+## Future work
+- Beautify the UI
+- Make the app support multiple users
