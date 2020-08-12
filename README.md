@@ -6,7 +6,7 @@ This is an app developed with Flutter framework. And it is designed to control o
 
 Please follow the instruction wrote by Google to install Flutter on your own computer and configure the Android Studio.
 
-[Flutter:Getting started](https://flutter.dev/docs/get-started/install)
+[Flutter: Getting started](https://flutter.dev/docs/get-started/install)
 
 Then clone the repository and open it with Android Studio. And you can build, run or do everything you want.
 
@@ -17,7 +17,7 @@ The main functions are:
 - Remove the device
 - Unlock & Lock
 - See what is happening in front of your smart lock with streaming
-- Get notified when stranger is approaching your smart lock
+- Get notified when a stranger is approaching your smart lock
 
 You can explore the corresponding function in the code.
 
