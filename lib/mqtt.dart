@@ -24,6 +24,7 @@ class MqttApp {
     this.notificationManager = notificationManager;
   }
 
+  //Connect to the Mqtt server
   Future<int> connect() async {
     _client.logging(on: true);
     _client.onConnected = onConnected;
@@ -67,9 +68,11 @@ class MqttApp {
     return 1;
   }
 
+  //Subscribe the topic
   Future<void> subscribe(String topic) async {
-    var count=0;
-    while (_client.connectionStatus.state != MqttConnectionState.connected&&count<1000) {
+    var count = 0;
+    while (_client.connectionStatus.state != MqttConnectionState.connected &&
+        count < 1000) {
       _client.connect();
       Future.delayed(Duration(milliseconds: 5000), () {});
       count++;
@@ -77,43 +80,44 @@ class MqttApp {
     _client.subscribe(topic, MqttQos.exactlyOnce);
   }
 
-  void listen() {}
+  //Send message to the server
   void sendMsg(String msg, String pubTopic) {
     final builder = MqttClientPayloadBuilder();
     builder.addString(msg);
     _client.publishMessage(pubTopic, MqttQos.exactlyOnce, builder.payload);
   }
 
+  //Disconnect
   Future<void> mqttdisconnect() async {
     await _client.disconnect();
   }
 
-  // 连接成功
+  // Connected callback
   void onConnected() {
     print('Connected');
   }
 
-// 连接断开
+  //Disconnected callback
   void onDisconnected() {
     print('Disconnected');
   }
 
-// 订阅主题成功
+  //Subscribed callbalck
   void onSubscribed(String topic) {
     print('Subscribed topic: $topic');
   }
 
-// 订阅主题失败
+//Failed tp subscribe callback
   void onSubscribeFail(String topic) {
     print('Failed to subscribe $topic');
   }
 
-// 成功取消订阅
+// Unsubscribed callback
   void onUnsubscribed(String topic) {
     print('Unsubscribed topic: $topic');
   }
 
-// 收到 PING 响应
+// Ping callback
   void pong() {
     print('Ping response client callback invoked');
   }
