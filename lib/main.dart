@@ -67,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
         .initialize(initSetttings, onSelectNotification: selectNotification);
   }
 
-  //设置点击事件
+  //Set the click event
   // ignore: missing_return
   Future<void> selectNotification(String payload) async {
     showDialog(
@@ -96,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  //开锁控制
+  //Unlock control
   Future<void> _unlock() async {
     _client.sendMsg(
         "unlock device app " +
@@ -172,7 +172,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  //上锁控制
+  //Lock control
   Future<void> _lock() async {
     _client.sendMsg(
         "lock device app " +
@@ -180,7 +180,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     DateTime.now().millisecondsSinceEpoch)
                 .toString(),
         "toserver");
-    //TODO:可能需要更改地址
     Response response =
         await _dio.post('http://192.168.43.103:5000/test', data: {
       "name": "lock",
@@ -245,7 +244,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  //串流控制
+  //Stream control
   void _stream() {
     showDialog<Null>(
         context: context,
@@ -258,7 +257,7 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 
-  //图片下载
+  //Picture download
   Future<void> capture() async {
     //TODO:可能需要改地址
     Navigator.push(
@@ -296,7 +295,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  //列表添加
+  //Add new device
   Future<void> _listAdd() async {
     if (await Permission.location.request().isDenied) {
       Permission.location.request();
@@ -342,8 +341,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                       Animation<double> animation,
                                       Animation<double> secondaryAnimation) =>
                                   Column(
-                                    // 并没有在 MaterialApp 中设定 /efg 路由
-                                    // 因为Navigator的特性 使用nContext 可以跳转 /efg
                                     children: <Widget>[
                                       for (var item in _listAvailableDevice)
                                         Card(
@@ -446,11 +443,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                               .then((value) =>
                                                   _client.mqttdisconnect());
                                           print('wifi connected');
-//                                          Future.delayed(
-//                                              Duration(milliseconds: 1000),
-//                                              () async {
-//                                            await _client.connect();
-//                                          });
                                                 _client.subscribe(_appTopic);
 
                                           Future.delayed(
@@ -569,7 +561,7 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 
-  //列表删除
+  //Remove the device
   void _listDelete() {
     showDialog<Null>(
       context: context,
@@ -600,6 +592,8 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+
+  //UI
   @override
   Widget build(BuildContext context) {
     _client = MqttApp('52.184.15.163', 'flutter_client', 1883, notifier);
